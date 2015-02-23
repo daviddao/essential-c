@@ -9,8 +9,10 @@ A C data structure library for rapid prototyping
 #### Dynamic Array 
 `darray` provides basic functionalities of an dynamic array
 
-#### Debug helper macros in `dbg.h`
+#### Hashtable
+`hashmap` depending on `darray`
 
+#### Debug helper macros in `dbg.h`
 
 #### Automatic Unit Testing in `minunit.h`
 
