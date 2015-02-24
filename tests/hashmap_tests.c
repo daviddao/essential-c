@@ -77,7 +77,7 @@ char *test_get_set_unique()
     mu_assert(result == expect1, "Wrong value for test1.");
 
     rc = Hashmap_set(map, test1, expect2);
-    mu_assert(rc == 0, "Failed to set test2");
+    mu_assert(rc == 1, "Failed to detect uniqueness");
     result = Hashmap_get(map, test1);
     mu_assert(result == expect1, "Wrong value for test2.");
 

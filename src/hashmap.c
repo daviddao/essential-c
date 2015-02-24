@@ -127,8 +127,8 @@ int Hashmap_set(Hashmap *map, void *key, void *data)
     if(Hashmap_get(map, key) != NULL) {
 
         debug("Key %s has already been set", key);
-        
-        return 0;
+
+        return 1;
 
     } else {
     
