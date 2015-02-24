@@ -122,17 +122,27 @@ error:
 
 
 int Hashmap_set(Hashmap *map, void *key, void *data)
-{
-    uint32_t hash = 0;
-    DArray *bucket = Hashmap_find_bucket(map, key, 1, &hash);
-    check(bucket, "Error can't create bucket.");
+{   
+    /* set unique keys */
+    if(Hashmap_get(map, key) != NULL) {
 
-    HashmapNode *node = Hashmap_node_create(hash, key, data);
-    check_mem(node);
+        debug("Key %s has already been set", key);
+        
+        return 0;
 
-    DArray_push(bucket, node);
+    } else {
+    
+        uint32_t hash = 0;
+        DArray *bucket = Hashmap_find_bucket(map, key, 1, &hash);
+        check(bucket, "Error can't create bucket.");
 
-    return 0;
+        HashmapNode *node = Hashmap_node_create(hash, key, data);
+        check_mem(node);
+
+        DArray_push(bucket, node);
+
+        return 0;
+    }
 
 error:
     return -1;
